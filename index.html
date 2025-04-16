@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Clout Clash - Competitive Social Gacha Battler where you collect NFT-based Clout Avatars, engage in meme battles, and earn SOL rewards through your social clout on Solana." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clout Clash - Turn Your Clout into Real Rewards</title>
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* RESET / BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0D0D0D;
+      color: #FFFFFF;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style-type: none;
+    }
+
+    /* Fade In Animation */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* HEADER */
+    header {
+      width: 100%;
+      background-color: #0D0D0D;
+      padding: 20px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+    .nav-links a {
+      font-weight: 500;
+      color: #CCC;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #FFF;
+    }
+    .btn-primary {
+      background-color: #38d227;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #44ff2f;
+    }
+    
+    /* HERO SECTION */
+    .hero {
+      width: 100%;
+      padding: 80px 5% 100px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      background-image: url('https://i.ibb.co/rGvF9Pnq/banner-cleaned.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: blur(8px);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80vh;
+      z-index: 0;
+    }
+    .hero-text {
+      max-width: 550px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    .hero-text p {
+      font-size: 1rem;
+      color: #CCC;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      margin-left: 140px;
+    }
+    .hero-image {
+      flex: 1;
+      min-width: 280px;
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+
+    /* HIGHLIGHT BAR */
+    .highlight-bar {
+      background-color: #1E1E1E;
+      padding: 14px 5%;
+      display: flex;
+      overflow-x: auto;
+      gap: 30px;
+      white-space: nowrap;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #FFF;
+      border-bottom: 1px solid #2A2A2A;
+      margin-top: 0px;
+    }
+    .highlight-bar span {
+      color: #AAA;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* FEATURES SECTION */
+    .features {
+      width: 100%;
+      padding: 80px 5%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .feature-box {
+      background-color: #1A1A1A;
+      padding: 30px;
+      border-radius: 12px;
+      width: calc(50% - 25px);
+      min-width: 260px;
+    }
+    .feature-box h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .feature-box p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #CCC;
+    }
+    .feature-box img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    /* GET STARTED / STEPS SECTION */
+    .steps {
+      width: 100%;
+      padding: 80px 5%;
+      text-align: center;
+    }
+    .steps h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+    .step-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .step-card {
+      background-color: #1A1A1A;
+      padding: 30px;
+      border-radius: 12px;
+      min-width: 240px;
+      max-width: 300px;
+      flex: 1;
+    }
+    .step-card h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .step-card p {
+      font-size: 0.95rem;
+      color: #CCC;
+      line-height: 1.5;
+    }
+
+    /* FAQ SECTION */
+    .faq-section {
+      width: 100%;
+      padding: 80px 5%;
+      background-color: #0D0D0D;
+    }
+    .faq-section h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .faq-item {
+      border-bottom: 1px solid #2A2A2A;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+    }
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .faq-question span {
+      font-size: 1.1rem;
+    }
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+    .faq-question i.rotate {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      margin-top: 10px;
+      color: #CCC;
+      display: none;
+      line-height: 1.6;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #0D0D0D;
+      padding: 40px 5%;
+      text-align: center;
+      border-top: 1px solid #1F1F1F;
+    }
+    footer .footer-title {
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 5px;
+    }
+    footer .footer-links {
+      margin-top: 15px;
+      font-size: 0.9rem;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+    footer .footer-links a {
+      color: #777;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    footer .footer-links a:hover {
+      color: #FFF;
+    }
+    footer .small-print {
+      color: #444;
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+
+    /* MEDIA QUERIES */
+    @media screen and (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .hero {
+        flex-direction: column;
+        padding: 40px 5% 60px;
+      }
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+      .cta-buttons {
+        margin-left: 0;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .features {
+        flex-direction: column;
+      }
+      .feature-box {
+        width: 100%;
+      }
+      .step-cards {
+        flex-direction: column;
+      }
+      .features,
+      .feature-box {
+        text-align: center;
+      }
+      .step-cards {
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / NAVIGATION -->
+  <header>
+    <div class="logo">Clout Clash</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#steps">How to Start</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero fade-in-section" id="home" style="position: relative; overflow: hidden;">
+    <div class="hero-bg"></div>
+    <!-- Particle Canvas (above the background image and behind the texts) -->
+    <canvas id="particle-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0.5;"></canvas>
+    <div class="hero-text">
+      <h1>Turn Your Clout into Real Rewards</h1>
+      <p>
+        Welcome to Clout Clash – a competitive social gacha battler where you collect NFT-based Clout Avatars representing meme lords, streamers, crypto enthusiasts, and anime fans. Engage in meme contests, mini-games, and community challenges while earning SOL based on your social engagement.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://clout-clash.gitbook.io/clout-clash" class="btn-primary">Gitbook</a>
+        <a href="#faq" class="btn-primary" style="background-color:#444; color:#FFF;">FAQ</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="https://i.ibb.co/WJkwgLv/logo-3d.png" alt="Clout Clash hero image">
+    </div>
+    <style>
+      @keyframes wobble {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        25% {
+          transform: translate(2px, -2px) rotate(1deg);
+        }
+        50% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        75% {
+          transform: translate(-2px, 2px) rotate(-1deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+      }
+      .hero-image img {
+        animation: wobble 8s infinite ease-in-out;
+      }
+      /* Add backdrop blur behind text so particles appear blurred */
+      .hero-text {
+        position: relative;
+        z-index: 1;
+        background-color: rgba(35, 35, 35, 0.3);
+        backdrop-filter: blur(4px);
+        padding: 20px;
+        border-radius: 8px;
+      }
+      @media screen and (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+        }
+        .hero-image {
+          order: -1;
+          margin: 0 auto;
+        }
+        .hero-text {
+          margin: 0 auto;
+          background-color: rgba(35, 35, 35, 0.3);
+          backdrop-filter: blur(4px);
+          padding: 20px;
+          border-radius: 8px;
+        }
+        .cta-buttons {
+          justify-content: center;
+        }
+      }
+    </style>
+    <script>
+      (function() {
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const particleCount = 40;
+
+        // Set up canvas size
+        function resizeCanvas() {
+          canvas.width = canvas.offsetWidth;
+          canvas.height = canvas.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        // Particle class
+        class Particle {
+          constructor() {
+            this.reset();
+          }
+          reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = canvas.height + Math.random() * 50;
+            this.size = Math.random() * 3 + 1;
+            this.speed = Math.random() * 1 + 0.5;
+            this.opacity = Math.random() * 0.5 + 0.5;
+          }
+          update() {
+            this.y -= this.speed;
+            if (this.y < -10) {
+              this.reset();
+            }
+          }
+          draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(56, 210, 39,' + this.opacity + ')';
+            ctx.shadowColor = 'rgba(56, 210, 39,' + this.opacity + ')';
+            ctx.shadowBlur = 30;
+            ctx.fill();
+          }
+        }
+
+        // Initialize particles
+        function initParticles() {
+          particles = [];
+          for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+          }
+        }
+        initParticles();
+
+        // Animation loop
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          particles.forEach(p => {
+            p.update();
+            p.draw();
+          });
+          requestAnimationFrame(animate);
+        }
+        animate();
+      })();
+    </script>
+  </section>
+
+  <!-- HIGHLIGHT BAR -->
+  <div class="highlight-bar">
+    <span>Competitive Battles</span>
+    <span>Earn Real SOL Rewards</span>
+    <span>NFT-Based Avatars</span>
+    <span>Social Media Integration</span>
+    <span>Community Driven Gameplay</span>
+  </div>
+
+  <!-- FEATURES SECTION -->
+  <section class="features fade-in-section" id="features">
+    <div class="feature-box">
+      <h3>Engagement-Driven Rewards</h3>
+      <p>
+        Collect, trade, and battle with NFT-based Clout Avatars—each with unique traits and skills inspired by internet subcultures.
+      </p>
+    </div>
+    <div class="feature-box">
+      <h3>Unique NFT Avatars</h3>
+      <p>
+        Collect, trade, and battle with NFT-based Clout Avatars—each with unique traits and skills inspired by internet subcultures.
+      </p>
+    </div>
+    <div class="feature-box">
+      <h3>Community-Centric Gaming</h3>
+      <p>
+        Join clubs, compete in team challenges, and immerse yourself in a vibrant community that values creativity and social connection.
+      </p>
+    </div>
+    <div class="feature-box">
+      <h3>Blockchain-Powered</h3>
+      <p>
+        Built on the Solana blockchain, Clout Clash delivers low-fee transactions and a secure platform where your digital assets are truly yours.
+      </p>
+    </div>
+    <style>
+      @media screen and (max-width: 768px) {
+        .features,
+        .feature-box {
+          text-align: center;
+        }
+      }
+    </style>
+  </section>
+
+  <!-- HOW TO START / GET STARTED SECTION -->
+  <section class="steps fade-in-section" id="steps">
+    <h2>Get Started with Clout Clash</h2>
+    <p>Ready to dive in and turn your clout into crypto rewards? Follow these simple steps:</p>
+    <style>
+      .step-cards {
+        display: flex;
+        gap: 10px;
+        align-items: stretch; /* Makes all cards equally tall */
+      }
+      .step-card {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .arrow svg {
+        display: block;
+      }
+      @media screen and (max-width: 768px) {
+        .step-cards {
+          flex-direction: column;
+          align-items: center;
+        }
+        .arrow {
+          display: none;
+        }
+      }
+    </style>
+    <div class="step-cards">
+      <div class="step-card">
+        <h4>Connect Your Solana Wallet</h4>
+        <p>Use Phantom or any compatible Solana wallet to safely store your NFTs and SOL rewards.</p>
+      </div>
+      <div class="arrow">
+        <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="0,0 20,10 0,20" fill="white"/>
+        </svg>
+      </div>
+      <div class="step-card">
+        <h4>Mint or Acquire an Avatar</h4>
+        <p>Mint a free Clout Avatar or trade in the marketplace to get started on your digital journey.</p>
+      </div>
+      <div class="arrow">
+        <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="0,0 20,10 0,20" fill="white"/>
+        </svg>
+      </div>
+      <div class="step-card">
+        <h4>Join Meme Battles and Mini-Games</h4>
+        <p>Engage in competitions, complete missions, and rise to the top of the leaderboards with your creative skills.</p>
+      </div>
+      <div class="arrow">
+        <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="0,0 20,10 0,20" fill="white"/>
+        </svg>
+      </div>
+      <div class="step-card">
+        <h4>Earn and Redeem SOL Rewards</h4>
+        <p>Climb the ranks and let your social clout pay off in real SOL rewards on the Solana blockchain.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section fade-in-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <span>What is Clout Clash?</span>
+        <i>▼</i>
+      </div>
+      <div class="faq-answer">
+        <p>
+          Clout Clash is a competitive social gacha battler built on Solana. Players collect NFT-based avatars representing different internet subcultures and battle in meme contests and mini-games to earn real SOL rewards.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <span>How do I earn SOL?</span>
+        <i>▼</i>
+      </div>
+      <div class="faq-answer">
+        <p>
+          Earn SOL by engaging in social battles, meme contests, and community challenges. Your level of interaction—such as likes, reposts, and wins—directly contributes to your SOL rewards.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <span>Do I need a crypto wallet?</span>
+        <i>▼</i>
+      </div>
+      <div class="faq-answer">
+        <p>
+          Yes. A Solana-compatible wallet such as Phantom is required to store your NFTs and earned SOL.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFAQ(this)">
+        <span>What are Clout Avatars?</span>
+        <i>▼</i>
+      </div>
+      <div class="faq-answer">
+        <p>
+          Clout Avatars are unique NFT characters inspired by various digital subcultures. They come with different traits and skills, and they can be collected, traded, and used to battle in the game.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="fade-in-section">
+    <div class="footer-title">Clout Clash</div>
+    <p class="small-print">Turn Your Clout into Crypto Rewards</p>
+    <div class="footer-links">
+      <a href="#">Twitter</a>
+      <a href="#">Discord</a>
+      <!-- <a href="#">Medium</a>-->
+      <a href="https://clout-clash.gitbook.io/clout-clash">GitBook</a>
+    </div>
+    <div class="small-print">
+      © 2025 Clout Clash. All Rights Reserved.
+      <br>
+      <a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <!-- JavaScript for FAQ Toggle -->
+  <script>
+    function toggleFAQ(elem) {
+      const icon = elem.querySelector('i');
+      const answer = elem.nextElementSibling;
+      icon.classList.toggle('rotate');
+      answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+    }
+    
+    // Fade in animation using IntersectionObserver
+    const faders = document.querySelectorAll('.fade-in-section');
+    const observerOptions = {
+      threshold: 0.2
+    };
+    
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    faders.forEach(el => {
+      appearOnScroll.observe(el);
+    });
+  </script>
+</body>
+</html>
