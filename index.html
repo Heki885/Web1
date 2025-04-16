@@ -1,358 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="description" content="Clout Clash - Competitive Social Gacha Battler where you collect NFT-based Clout Avatars, engage in meme battles, and earn SOL rewards through your social clout on Solana." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clout Clash - Turn Your Clout into Real Rewards</title>
-
-  <!-- FONT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
-
-  <style>
-    /* RESET / BASE */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #0D0D0D;
-      color: #FFFFFF;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    ul {
-      list-style-type: none;
-    }
-
-    /* Fade In Animation */
-    .fade-in-section {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .fade-in-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* HEADER */
-    header {
-      width: 100%;
-      background-color: #0D0D0D;
-      padding: 20px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 99;
-    }
-    header .logo {
-      font-size: 1.5rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
-    .nav-links {
-      display: flex;
-      gap: 30px;
-      align-items: center;
-    }
-    .nav-links a {
-      font-weight: 500;
-      color: #CCC;
-      transition: color 0.3s ease;
-    }
-    .nav-links a:hover {
-      color: #FFF;
-    }
-    .btn-primary {
-      background-color: #38d227;
-      color: #ffffff;
-      padding: 10px 20px;
-      border-radius: 25px;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-    .btn-primary:hover {
-      background-color: #44ff2f;
-    }
+    <meta charset="UTF-8" />
+    <meta name="description" content="Clout Clash - Competitive Social Gacha Battler where you collect NFT-based Clout Avatars, engage in meme battles, and earn SOL rewards through your social clout on Solana." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clout Clash</title>
     
-    /* HERO SECTION */
-    .hero {
-      width: 100%;
-      padding: 80px 5% 100px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-bg {
-      background-image: url('https://i.ibb.co/rGvF9Pnq/banner-cleaned.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      filter: blur(8px);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 80vh;
-      z-index: 0;
-    }
-    .hero-text {
-      max-width: 550px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-text h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      margin-bottom: 20px;
-      line-height: 1.2;
-    }
-    .hero-text p {
-      font-size: 1rem;
-      color: #CCC;
-      margin-bottom: 30px;
-      line-height: 1.5;
-    }
-    .cta-buttons {
-      display: flex;
-      gap: 20px;
-      margin-left: 140px;
-    }
-    .hero-image {
-      flex: 1;
-      min-width: 280px;
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-image img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 10px;
-    }
+    <!-- Favicon -->
+    <link rel="icon" type="https://i.ibb.co/WJkwgLv/logo-3d.png" sizes="32x32" href="favicon.png" />
 
-    /* HIGHLIGHT BAR */
-    .highlight-bar {
-      background-color: #1E1E1E;
-      padding: 14px 5%;
-      display: flex;
-      overflow-x: auto;
-      gap: 30px;
-      white-space: nowrap;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #FFF;
-      border-bottom: 1px solid #2A2A2A;
-      margin-top: 0px;
-    }
-    .highlight-bar span {
-      color: #AAA;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
 
-    /* FEATURES SECTION */
-    .features {
-      width: 100%;
-      padding: 80px 5%;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 50px;
-      align-items: flex-start;
-      justify-content: space-between;
-    }
-    .feature-box {
-      background-color: #1A1A1A;
-      padding: 30px;
-      border-radius: 12px;
-      width: calc(50% - 25px);
-      min-width: 260px;
-    }
-    .feature-box h3 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .feature-box p {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: #CCC;
-    }
-    .feature-box img {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
+    <style>
+        /* RESET / BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0D0D0D;
+            color: #FFFFFF;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style-type: none;
+        }
 
-    /* GET STARTED / STEPS SECTION */
-    .steps {
-      width: 100%;
-      padding: 80px 5%;
-      text-align: center;
-    }
-    .steps h2 {
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 20px;
-    }
-    .step-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-      margin-top: 40px;
-    }
-    .step-card {
-      background-color: #1A1A1A;
-      padding: 30px;
-      border-radius: 12px;
-      min-width: 240px;
-      max-width: 300px;
-      flex: 1;
-    }
-    .step-card h4 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .step-card p {
-      font-size: 0.95rem;
-      color: #CCC;
-      line-height: 1.5;
-    }
+        /* Fade In Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-    /* FAQ SECTION */
-    .faq-section {
-      width: 100%;
-      padding: 80px 5%;
-      background-color: #0D0D0D;
-    }
-    .faq-section h2 {
-      font-size: 2rem;
-      font-weight: 900;
-      margin-bottom: 40px;
-      text-align: center;
-    }
-    .faq-item {
-      border-bottom: 1px solid #2A2A2A;
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-    }
-    .faq-question {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .faq-question span {
-      font-size: 1.1rem;
-    }
-    .faq-question i {
-      transition: transform 0.3s ease;
-    }
-    .faq-question i.rotate {
-      transform: rotate(180deg);
-    }
-    .faq-answer {
-      margin-top: 10px;
-      color: #CCC;
-      display: none;
-      line-height: 1.6;
-    }
+        /* HEADER */
+        header {
+            width: 100%;
+            background-color: #0D0D0D;
+            padding: 20px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-weight: 500;
+            color: #CCC;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #FFF;
+        }
+        .btn-primary {
+            background-color: #38d227;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #44ff2f;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            width: 100%;
+            padding: 80px 5% 100px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            background-image: url('https://i.ibb.co/rGvF9Pnq/banner-cleaned.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(8px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80vh;
+            z-index: 0;
+        }
+        .hero-text {
+            max-width: 550px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero-text p {
+            font-size: 1rem;
+            color: #CCC;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            margin-left: 140px;
+        }
+        .hero-image {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+        }
 
-    /* FOOTER */
-    footer {
-      background-color: #0D0D0D;
-      padding: 40px 5%;
-      text-align: center;
-      border-top: 1px solid #1F1F1F;
-    }
-    footer .footer-title {
-      font-size: 1.5rem;
-      font-weight: 900;
-      margin-bottom: 5px;
-    }
-    footer .footer-links {
-      margin-top: 15px;
-      font-size: 0.9rem;
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
-    footer .footer-links a {
-      color: #777;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    footer .footer-links a:hover {
-      color: #FFF;
-    }
-    footer .small-print {
-      color: #444;
-      font-size: 0.8rem;
-      margin-top: 10px;
-    }
+        /* HIGHLIGHT BAR */
+        .highlight-bar {
+            background-color: #1E1E1E;
+            padding: 14px 5%;
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            white-space: nowrap;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #FFF;
+            border-bottom: 1px solid #2A2A2A;
+            margin-top: 0px;
+        }
+        .highlight-bar span {
+            color: #AAA;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
 
-    /* MEDIA QUERIES */
-    @media screen and (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
-      }
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      .hero {
-        flex-direction: column;
-        padding: 40px 5% 60px;
-      }
-      .hero-text h1 {
-        font-size: 2.5rem;
-      }
-      .cta-buttons {
-        margin-left: 0;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .features {
-        flex-direction: column;
-      }
-      .feature-box {
-        width: 100%;
-      }
-      .step-cards {
-        flex-direction: column;
-      }
-      .features,
-      .feature-box {
-        text-align: center;
-      }
-      .step-cards {
-        align-items: center;
-      }
-    }
-  </style>
+        /* FEATURES SECTION */
+        .features {
+            width: 100%;
+            padding: 80px 5%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+        .feature-box {
+            background-color: #1A1A1A;
+            padding: 30px;
+            border-radius: 12px;
+            width: calc(50% - 25px);
+            min-width: 260px;
+        }
+        .feature-box h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .feature-box p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #CCC;
+        }
+        .feature-box img {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* GET STARTED / STEPS SECTION */
+        .steps {
+            width: 100%;
+            padding: 80px 5%;
+            text-align: center;
+        }
+        .steps h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        .step-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .step-card {
+            background-color: #1A1A1A;
+            padding: 30px;
+            border-radius: 12px;
+            min-width: 240px;
+            max-width: 300px;
+            flex: 1;
+        }
+        .step-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .step-card p {
+            font-size: 0.95rem;
+            color: #CCC;
+            line-height: 1.5;
+        }
+
+        /* FAQ SECTION */
+        .faq-section {
+            width: 100%;
+            padding: 80px 5%;
+            background-color: #0D0D0D;
+        }
+        .faq-section h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .faq-item {
+            border-bottom: 1px solid #2A2A2A;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .faq-question span {
+            font-size: 1.1rem;
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        .faq-question i.rotate {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            margin-top: 10px;
+            color: #CCC;
+            display: none;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #0D0D0D;
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 1px solid #1F1F1F;
+        }
+        footer .footer-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 5px;
+        }
+        footer .footer-links {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        footer .footer-links a {
+            color: #777;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        footer .footer-links a:hover {
+            color: #FFF;
+        }
+        footer .small-print {
+            color: #444;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        /* MEDIA QUERIES */
+        @media screen and (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero {
+                flex-direction: column;
+                padding: 40px 5% 60px;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .cta-buttons {
+                margin-left: 0;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .features {
+                flex-direction: column;
+            }
+            .feature-box {
+                width: 100%;
+            }
+            .step-cards {
+                flex-direction: column;
+            }
+            .features,
+            .feature-box {
+                text-align: center;
+            }
+            .step-cards {
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
 
